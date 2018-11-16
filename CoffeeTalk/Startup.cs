@@ -46,6 +46,10 @@ namespace CoffeeTalk
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
+            app.UseHttpsRedirection();
+            app.UseMvc();
+
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
