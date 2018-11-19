@@ -27,14 +27,18 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\question-base.ts" />
+    <None Remove="ClientApp\src\app\question-control.service.ts" />
     <None Remove="ClientApp\src\app\question-dropdown.ts" />
     <None Remove="ClientApp\src\app\question-textbox.ts" />
+    <None Remove="ClientApp\src\app\question.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\question-base.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\question-control.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\question-dropdown.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\question-textbox.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\question.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
