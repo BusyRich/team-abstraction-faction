@@ -9,6 +9,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { MenuComponent } from './menu/menu.component';
+import { MenuFormComponent } from './menu-form/menu-form.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { MenuComponent } from './menu/menu.component';
     HomeComponent,
     FetchDataComponent,
     MenuComponent,
+    MenuFormComponent,
     
   ],
   imports: [
