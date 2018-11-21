@@ -9,14 +9,11 @@ import { CoffeeOrder } from '../coffee-order';
 })
 export class MenuFormComponent {
 
-  coffee = ["Mocha", "Original", "French Vanilla", "Decaf", "Latte"];
-  model = new CoffeeOrder(1, "John Doe", this.coffee[0]);
+  drinks = ["Mocha", "Original", "French Vanilla", "Decaf", "Latte"];
+  model = new CoffeeOrder(1, "John Doe", this.drinks[0]);
   submitted = false;
   onSubmit() { this.submitted = true; }
-
-  // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.model); }
-  
+ 
   constructor() { }
 
   ngOnInit() {
