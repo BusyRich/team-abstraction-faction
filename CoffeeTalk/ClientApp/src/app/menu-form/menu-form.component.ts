@@ -13,7 +13,10 @@ export class MenuFormComponent {
   model = new CoffeeOrder(1, "John Doe", this.drinks[0]);
   submitted = false;
   onSubmit() { this.submitted = true; }
- 
+
+  addOrder() {
+    this.model = new CoffeeOrder(1,"", "");
+  } 
   constructor() { }
 
   ngOnInit() {

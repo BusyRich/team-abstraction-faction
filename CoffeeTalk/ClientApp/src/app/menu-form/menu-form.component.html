@@ -1,5 +1,5 @@
-<div class="container">
-  <form #menuForm="ngForm">
+<div class="container" [hidden]="submitted">
+  <form (ngSubmit)="onSubmit()" #menuForm="ngForm">
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name"
@@ -9,13 +9,31 @@
 
     <div class="form-group">
       <label for="drink">Choose your drink</label>
-      <select class="form-control" id="drink" required [(ngModel)]="model.drink" name="drink" >
+      <select class="form-control" id="drink" required [(ngModel)]="model.drink" name="drink">
         <option *ngFor="let drink of drinks" [value]="drink">{{drink}}</option>
       </select>
     </div>
-
-    <button type="submit" class="btn btn-primary" (click)="newOrder();
-            menuForm.reset()">Place your coffee order!</button>
+    <button type="button" class="btn btn-default" (click)="addOrder() ;
+            menuForm.reset()">Add to order</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!menuForm.form.valid">
+      Place your coffee order!
+    </button>
 
   </form>
+
+</div>
+
+<div [hidden]="!submitted">
+  <h2>Thank you for your order!</h2>
+  <div class="row">
+    <div class="col-xs-3">Name:</div>
+    <div class="col-xs-9">{{ model.name }}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-3">Drink:</div>
+    <div class="col-xs-9">{{ model.drink }}</div>
+  </div>
+  <br>
+  <button class="btn btn-primary" (click)="submitted=false">Edit</button>
 </div>
