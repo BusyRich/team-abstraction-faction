@@ -1,24 +1,23 @@
-<h1>Weather forecast</h1>
 
-<p>This component demonstrates fetching data from the server.</p>
+<h1>Available Coffee</h1>
 
-<p *ngIf="!forecasts"><em>Loading...</em></p>
+<p>Our current range of delicious coffee.</p>
 
-<table class='table' *ngIf="forecasts">
+<p *ngIf="!coffee"><em>Loading...</em></p>
+
+<table class='table' *ngIf="coffee">
   <thead>
     <tr>
-      <th>Date</th>
-      <th>Temp. (C)</th>
-      <th>Temp. (F)</th>
-      <th>Summary</th>
+      <th>ProductID</th>
+      <th>CoffeeName</th>
+      <th>Price</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let forecast of forecasts">
-      <td>{{ forecast.dateFormatted }}</td>
-      <td>{{ forecast.temperatureC }}</td>
-      <td>{{ forecast.temperatureF }}</td>
-      <td>{{ forecast.summary }}</td>
+    <tr *ngFor="let cof of coffee">
+      <td>{{ cof.productID }}</td>
+      <td>{{ cof.coffeeName }}</td>
+      <td>{{ cof.price }}</td>
     </tr>
   </tbody>
 </table>

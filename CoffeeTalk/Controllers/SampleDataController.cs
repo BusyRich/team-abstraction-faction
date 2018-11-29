@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CoffeeTalk.Services; //Imports DB Service
-using CoffeeTalk.Models; //Imports the Coffee Model
+using CoffeeTalk.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoffeeTalk.Controllers
@@ -20,40 +20,20 @@ namespace CoffeeTalk.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
+        //selects all the coffees from the DB
         [HttpGet("[action]")]
-        public IEnumerable<WeatherForecast> WeatherForecasts()
+        public IEnumerable<Coffee> selectCoffee()
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            Coffee[] coffees = DB.Select();
+
+            return Enumerable.Range(0, coffees.Count()).Select(index => new Coffee
             {
-                DateFormatted = DateTime.Now.AddDays(index).ToString("d"),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
+                ProductID = coffees[index].ProductID,
+                CoffeeName = coffees[index].CoffeeName,
+                Price = coffees[index].Price
             });
         }
-
-        public class WeatherForecast
-        {
-            public string DateFormatted { get; set; }
-            public int TemperatureC { get; set; }
-            public string Summary { get; set; }
-
-            public int TemperatureF
-            {
-                get
-                {
-                    return 32 + (int)(TemperatureC / 0.5556);
-                }
-            }
-        }
-
-        //returns a list of coffee objects
-        [HttpGet("[action]")]
-        public List<Coffee> GetCoffee()
-        {
-            return DB.Select();
-        }
-
+        
         //creates a new coffee on the database
         [HttpPost]
         public IActionResult CreateCoffee([FromBody]Coffee coffee)

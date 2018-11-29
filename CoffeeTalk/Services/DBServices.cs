@@ -16,6 +16,8 @@ namespace CoffeeTalk.Services
         private string uid;
         private string password;
 
+        private int queries = 0;
+
         //Constructor
         public DBServices()
         {
@@ -178,12 +180,15 @@ namespace CoffeeTalk.Services
         }
 
         //Select statement
-        public List<Coffee> Select() //returns a list of all the coffee rows in CoffeeDB
+        public Coffee[] Select() //returns a list of all the coffee rows in CoffeeDB
         {
             string query = "SELECT * FROM CoffeeDB.CoffeeDB";
 
             //list of Coffees
-            List<Coffee> coffeeList = new List<Coffee> { };
+            Coffee[] coffeeList;
+
+            Count();
+            int index = 0;
 
             //Open connection
             if (this.OpenConnection() == true)
@@ -192,7 +197,7 @@ namespace CoffeeTalk.Services
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 //Create the data reader and Execute the command
                 MySqlDataReader dataReader = cmd.ExecuteReader();
-
+                coffeeList = new Coffee[queries];
                 //Read the data and store them in the list
                 while (dataReader.Read())
                 {
@@ -202,10 +207,11 @@ namespace CoffeeTalk.Services
                     //sets the coffee's properties
                     coffee.ProductID = Convert.ToInt32(dataReader["ProductID"]);
                     coffee.CoffeeName = Convert.ToString(dataReader["CoffeeName"]);
-                    coffee.Price = Convert.ToDouble(dataReader["Price"]);
+                    coffee.Price = Convert.ToString(dataReader["Price"]);
 
                     //adds the coffee to the list of coffees
-                    coffeeList.Add(coffee);
+                    coffeeList[index] = coffee;
+                    index++;
                 }
 
                 //close Data Reader
@@ -219,12 +225,12 @@ namespace CoffeeTalk.Services
             }
             else
             {
-                return coffeeList;
+                return null;
             }
         }
 
         //Count statement
-        public int Count() //returns a count of all the rows within the CoffeeDB
+        public void Count() //returns a count of all the rows within the CoffeeDB
         {
             string query = "SELECT Count(*) FROM CoffeeDB.CoffeeDB";
             int Count = -1;
@@ -242,11 +248,11 @@ namespace CoffeeTalk.Services
                 this.CloseConnection();
 
                 //return the amount of coffees
-                return Count;
+                queries = Count;
             }
             else
             {
-                return Count;
+                
             }
         }
     }

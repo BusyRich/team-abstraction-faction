@@ -1,23 +1,31 @@
 import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-fetch-data',
   templateUrl: './fetch-data.component.html'
 })
+
 export class FetchDataComponent {
-  public forecasts: WeatherForecast[];
+  public Url: string;
+  public http: HttpClient;
+  public coffee: Coffee[];
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<WeatherForecast[]>(baseUrl + 'api/SampleData/WeatherForecasts').subscribe(result => {
-      this.forecasts = result;
+
+    this.Url = baseUrl + 'api/SampleData/SelectCoffee';
+    this.http = http;
+
+    this.http.get<Coffee[]>(this.Url).subscribe(result => {
+      this.coffee = result;
     }, error => console.error(error));
+    
   }
+
 }
 
-interface WeatherForecast {
-  dateFormatted: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
+interface Coffee {
 }
+
+

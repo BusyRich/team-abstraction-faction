@@ -9,6 +9,6 @@ namespace CoffeeTalk.Models
     {
         public int ProductID { get; set; }
         public string CoffeeName { get; set; }
-        public double Price { get; set; }
+        public string Price { get; set; }
     }
 }
