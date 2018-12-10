@@ -13,12 +13,7 @@ namespace CoffeeTalk.Controllers
     public class SampleDataController : Controller
     {
 
-        private DBServices DB = new DBServices(); //instantiates the MySQL DB object
-
-        private static string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        private DBServices DB = new DBServices();
 
         //selects all the coffees from the DB
         [HttpGet("[action]")]

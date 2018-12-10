@@ -1,2 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+
+
+.talk {
+  margin-left: 25%;
+  margin-right: 25%;
+  align-items: center;
+  background-color: antiquewhite;
+  border-radius: 10px;
+  padding: 3px;
+  margin-bottom: 1%;
+  margin-top: 1%;
+}
+
+.coffeePic{
+  width:25%;
+  padding:3%;
+}
+
+.des {
+  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.description {
+  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+  float:right;
+  margin-right:10%;
+  margin-top:15%;
+}
+
+.fleft{
+  float:left;
+  margin-left:2%;
+}
+
+.fright{
+  float:right;
+  margin-right:5%;
+}
+
+.fontStyled {
+  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+}

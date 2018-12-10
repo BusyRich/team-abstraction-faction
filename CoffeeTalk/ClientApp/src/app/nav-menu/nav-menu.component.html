@@ -27,6 +27,11 @@
                 <span class='glyphicon glyphicon-th-list'></span> Coffee Range
               </a>
             </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/talk"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-th-list'></span> Talk About Coffee
+              </a>
+            </li>
           </ul>
         </div>
     </div>

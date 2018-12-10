@@ -1,3 +1,4 @@
+
 <div class="container" [hidden]="submitted">
   <form (ngSubmit)="onSubmit()" #menuForm="ngForm">
     <div class="form-group">
@@ -10,7 +11,7 @@
     <div class="form-group">
       <label for="drink">Choose your drink</label>
       <select class="form-control" id="drink" required [(ngModel)]="model.drink" name="drink">
-        <option *ngFor="let drink of drinks" [value]="drink">{{drink}}</option>
+        <option *ngFor="let drink of coffee" [value]="drink">{{drink.coffeeName}}</option>
       </select>
     </div>
     <button type="button" class="btn btn-default" (click)="addOrder() ;

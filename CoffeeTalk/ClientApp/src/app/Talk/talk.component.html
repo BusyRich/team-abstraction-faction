@@ -1,0 +1,14 @@
+
+<h1>Talk Coffee</h1>
+
+<p class="des">This is list from customers on their favorite coffee. Feel free to post your favorite or gain exposure to your own brand!</p>
+
+<p *ngIf="!coffee"><em>Loading...</em></p>
+
+<div align="center" class="talk" *ngFor="let cof of coffee">
+  <h3 class="fleft">{{ cof.productID }}. {{ cof.coffeeName }}</h3>
+  <img class="coffeePic" src="{{ cof.picUrl }}" />
+  <p class="description">{{ cof.description }}</p>
+</div>
+
+

@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { MenuComponent } from './menu/menu.component';
 import { MenuFormComponent } from './menu-form/menu-form.component';
+import { TalkComponent } from './Talk/talk.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { MenuFormComponent } from './menu-form/menu-form.component';
     FetchDataComponent,
     MenuComponent,
     MenuFormComponent,
+    TalkComponent,
     
   ],
   imports: [
@@ -30,6 +32,7 @@ import { MenuFormComponent } from './menu-form/menu-form.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'menu', component: MenuComponent },
+      { path: 'talk', component: TalkComponent },
     ]),
   ],
   providers: [],
