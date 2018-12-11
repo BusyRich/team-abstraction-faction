@@ -45,3 +45,11 @@
   font-size: 18px;
   font-family: 'Montserrat', sans-serif;
 }
+
+.otherFont {
+  font-family: 'Acme', sans-serif;
+}
+
+.center {
+  text-align: center;
+}
