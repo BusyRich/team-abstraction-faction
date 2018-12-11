@@ -17,14 +17,14 @@
                 <span class='glyphicon glyphicon-home'></span> Home
               </a>
             </li>
-            <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/menu"]' (click)='collapse()'>
-                <span class='glyphicon glyphicon-shopping-cart'></span> Menu
-              </a>
-            </li>
             <li [routerLinkActive]='["link-active"]'>
               <a [routerLink]='["/fetch-data"]' (click)='collapse()'>
                 <span class='glyphicon glyphicon-th-list'></span> Coffee Range
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/menu"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-shopping-cart'></span> Menu
               </a>
             </li>
             <li [routerLinkActive]='["link-active"]'>
