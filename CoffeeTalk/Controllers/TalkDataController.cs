@@ -29,16 +29,20 @@ namespace CoffeeTalk.Controllers
                 Description = coffees[index].Description,
             });
         }
-        
+
         //creates a new coffee on the database
-        [HttpPost]
+        [HttpPost("[action]")]
         public IActionResult CreateCoffee([FromBody]Talk coffee)
         {
-            if (DB.Insert(coffee))
+            try
+            {
+                DB.Insert(coffee);
                 return StatusCode(200, "Your coffee was added to the database!");
-            else
+            }
+            catch
+            {
                 return StatusCode(500, "Error: Your coffee was not added to the database...");
+            }
         }
-        
     }
 }

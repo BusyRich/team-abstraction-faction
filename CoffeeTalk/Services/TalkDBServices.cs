@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using CoffeeTalk.Models;
+using System.Data;
+using System.Diagnostics;
 
 namespace CoffeeTalk.Services
 {
@@ -86,32 +88,36 @@ namespace CoffeeTalk.Services
         //Insert statement
         public bool Insert(Talk coffee)
         {
-            string query = "Insert Into CoffeeDB.CoffeeTalk (CoffeeName, PicUrl, Description) Values(" + coffee.CoffeeName + ", " + coffee.PicUrl + ", " + coffee.Description + "); ";
+            string query = "Insert Into CoffeeDB.CoffeeTalk (ProductID, CoffeeName, PicUrl, Description) Values(?ProductID, ?CoffeeName, ?PicUrl, ?Description);";
 
-            try
+            
+            using (MySqlCommand comm = new MySqlCommand())
             {
-                //open connection
-                if (this.OpenConnection() == true)
+                comm.Connection = connection;
+                comm.CommandText = query;
+                comm.CommandType = CommandType.Text;
+
+                comm.Parameters.AddWithValue("?ProductID", coffee.ProductID);
+                comm.Parameters.AddWithValue("?CoffeeName", coffee.CoffeeName);
+                comm.Parameters.AddWithValue("?PicUrl", coffee.PicUrl);
+                comm.Parameters.AddWithValue("?Description", coffee.Description);
+
+                try
                 {
-                    //create command and assign the query and connection from the constructor
-                    MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                    //Execute command
-                    cmd.ExecuteNonQuery();
-
-                    //close connection
-                    this.CloseConnection();
-
+                    connection.Open();
+                    comm.ExecuteNonQuery();
+                    connection.Close();
                     return true;
                 }
-                else
+                catch (MySqlException e)
                 {
+                    // do something with the exception
+                    // do not hide it
+                    // e.Message.ToString()
+                    Debug.WriteLine(e.Message.ToString());
+                    connection.Close();
                     return false;
                 }
-            }
-            catch
-            {
-                return false;
             }
         }
 
