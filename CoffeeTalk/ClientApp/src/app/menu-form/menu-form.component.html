@@ -1,5 +1,5 @@
 
-<div class="container" [hidden]="submitted">
+<div class="container inputLength" [hidden]="submitted">
   <form (ngSubmit)="onSubmit()" #menuForm="ngForm">
     <div class="form-group">
       <label for="name">Name</label>
@@ -16,7 +16,7 @@
     </div>
     <button type="button" class="btn btn-default" (click)="addOrder() ;
             menuForm.reset()">Add to order</button>
-    <button type="submit" class="btn btn-success" [disabled]="!menuForm.form.valid">
+    <button type="submit" class="btn btn-info" [disabled]="!menuForm.form.valid">
       Place your coffee order!
     </button>
 
@@ -32,9 +32,9 @@
   </div>
 
   <div class="row">
-    <div class="col-xs-3">Drink:</div>
-    <div class="col-xs-9">{{ model.drink }}</div>
+    <!-- <div class="col-xs-3">Drink:</div>
+      <div class="col-xs-9">{{ model.drink }}</div>-->
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false">Edit</button>
   </div>
-  <br>
-  <button class="btn btn-primary" (click)="submitted=false">Edit</button>
-</div>

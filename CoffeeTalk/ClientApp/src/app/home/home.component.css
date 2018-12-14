@@ -5,6 +5,7 @@
 img {
   max-width: 100%;
   height: auto;
+  position: relative;
 }
 
 .container {
@@ -13,4 +14,29 @@ img {
 
 h1 {
   font-size: 3em;
+}
+
+.hideText {
+  visibility:hidden;
+}
+
+@media only screen and (min-width: 768px) {
+
+  img{
+    display:inline-block;
+  }
+
+  .hideText {
+    visibility: visible;
+    display: inline-block;
+    font-family: 'Devonshire', cursive;
+    font-size: 2em;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+
+  img {
+    margin-left: -3em;
+  }
 }

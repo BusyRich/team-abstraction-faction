@@ -18,25 +18,25 @@
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" class="form-control" id="name" required [(ngModel)]="model.CoffeeName" name="name"
-             #name="ngModel">
+             #name="ngModel" style="width: 50em;">
       <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Coffee's Name is required</div>
     </div>
 
     <div class="form-group">
       <label for="PicUrl">URL To Picture</label>
       <input type="text" class="form-control" id="PicUrl" required [(ngModel)]="model.PicUrl" name="PicUrl"
-             #name="ngModel">
+             #name="ngModel" style="width: 50em;">
       <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Picture's URL is required</div>
     </div>
 
     <div class="form-group">
       <label for="Description">Description</label>
       <input type="text" class="form-control" id="Description" required [(ngModel)]="model.Description" name="Description"
-             #name="ngModel">
+             #name="ngModel" style="width: 50em;">
       <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Coffee's Description is required</div>
     </div>
 
-    <button type="submit" class="btn btn-success" [disabled]="!menuForm.form.valid">
+    <button type="submit" class="btn btn-info" [disabled]="!menuForm.form.valid">
       Post!
     </button>
 
@@ -46,5 +46,5 @@
 
 <div [hidden]="!submitted">
   <h2>Thank you for your post!</h2>
-  <button class="btn btn-primary" (click)="submitted=false">OK</button>
+  <button class="btn btn-info" (click)="submitted=false">OK</button>
 </div>
